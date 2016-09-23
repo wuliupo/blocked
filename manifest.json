@@ -10,5 +10,5 @@
    "manifest_version": 2,
    "name": "Blocked",
    "permissions": [ "webRequest", "webRequestBlocking", "\u003Call_urls>", "tabs" ],
-   "version": "0.0.1"
+   "version": "0.0.2"
 }
