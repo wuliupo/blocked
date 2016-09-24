@@ -1,0 +1,10 @@
+body{}
+/* common */
+.ad,
+/* sina */
+.gamead2014, .gamead1, .bsWXBox, .bgAdWrap, .sinaads, .right_nav, .apppop, .zhitoutemp,
+/* 163 */
+.lzrd-ad-external, .adtop, .youdao, .w-slider, .ad-sub, .ad-area, .ad-main, .ns-sidebar, .adsbydm, [lzrd-class],
+/* sohu */
+#ad_TOP, #ad_A, #ad_B, #ad_C, #ad_D, #ad_E, #ad_F, #ad_G, #ad_H, #ad_I, #ad_J, #ad_K, #ad_L, #ad_M, #ad_N, #ad_O, #ad_P, #ad_Q, #ad_R, #ad_S, #ad_T, #ad_U, #ad_V, #ad_W, #ad_X, #ad_Y, #ad_Z, .AD-new1, .AD-new2, .AD-new3, .boxC-RA, .ad650, #adsFrame, sohuadcode
+{display:none!important;visibility:hidden!important;}

@@ -2,6 +2,14 @@
    "background": {
       "scripts": [ "blocked.js" ]
    },
+   "content_scripts": [
+      {
+         "matches": ["\u003Call_urls>"],
+         "js": ["inject.js"],
+         "css": ["inject.css"],
+         "run_at": "document_end"
+      }
+   ],
    "browser_action": {
       "default_icon": "icon.png",
       "default_title": "Block some website"
@@ -10,5 +18,5 @@
    "manifest_version": 2,
    "name": "Blocked",
    "permissions": [ "webRequest", "webRequestBlocking", "\u003Call_urls>", "tabs" ],
-   "version": "0.0.2"
+   "version": "0.0.3"
 }
