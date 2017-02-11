@@ -1,1 +1,1 @@
-console.log('test inject');
+console.log('%c http://pauli.cn ', 'background: #222; color: #bada55');
