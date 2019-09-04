@@ -59,7 +59,7 @@ var BLOCKED_WORDS = 'cnzz 0745zpl twyxi jb51 360doc qihu qihoo open-open e70123 
 ' googletagmanager googleadsserving googleads doubleclick googlesyndication ' +
 ' nyx.qxwz.com/js/biz growingio most-visited taboola stack-sonar'.split(/\s+/);
 
-var BLOCKED_DOMAINS = 'baidu youdao sogou qq.com sina sohu youdao google'.split(/\s+/);
+var BLOCKED_DOMAINS = 'baidu youdao dfcfw sogou qq.com sina sohu youdao google'.split(/\s+/);
 
 function blockHost(host) {
   var colon;
