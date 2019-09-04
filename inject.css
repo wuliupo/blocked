@@ -1,37 +1,50 @@
 body{}
 /* common */
-.ad, .ad_top, .blog_ad, .single-ad, #comments_box, .side_dvs, .fashion-list, .mak, .codeView, .adSbaList, .embedHzh, embed,
+.ad, .ad_top, .blog_ad, .single-ad, #comments_box, .side_dvs, .fashion-list,
+.mak, .codeView, .adSbaList, .embedHzh, embed,
 
 /* baidu */
-.fcImgli, .hgBqKX, #content_right, .fixed_rbox, .cms-slide, .jump-top-box, .wgt-daily, .adTopImg, .left-promotion, .share-area, .cdwSrZ,
+.fcImgli, .hgBqKX, #content_right, .fixed_rbox, .cms-slide, .jump-top-box,
+.wgt-daily, .adTopImg, .left-promotion, .share-area, .cdwSrZ,
 #content_left>div:not(.result),
 
 /* sina */
 .gamead2014, .gamead1, .bsWXBox, .bgAdWrap, .sinaads, .right_nav, .apppop, .zhitoutemp,
 
 /* 163 */
-.lzrd-ad-external, .adtop, .youdao, .w-slider, .ad-sub, .ad-area, .ad-main, .ns-sidebar, .adsbydm, [lzrd-class],
-#advertisement_box, .m-nav-promote, .m-side-operation, #j-loginRemind, .gg200x300, .gg300, .post_content_endad, .post_adtop_main, .post_area iframe, .post_topad,
+.lzrd-ad-external, .adtop, .youdao, .w-slider, .ad-sub, .ad-area, .ad-main,
+.ns-sidebar, .adsbydm, [lzrd-class],
+#advertisement_box, .m-nav-promote, .m-side-operation, #j-loginRemind,
+.gg200x300, .gg300, .post_content_endad, .post_adtop_main, .post_area iframe, .post_topad,
 
 /* sohu */
-#ad_TOP, #ad_A, #ad_B, #ad_C, #ad_D, #ad_E, #ad_F, #ad_G, #ad_H, #ad_I, #ad_J, #ad_K, #ad_L, #ad_M, #ad_N, #ad_O, #ad_P, #ad_Q, #ad_R, #ad_S, #ad_T, #ad_U, #ad_V, #ad_W, #ad_X, #ad_Y, #ad_Z, .AD-new1, .AD-new2, .AD-new3, .boxC-RA, .ad650, #adsFrame, sohuadcode,
+#ad_TOP, #ad_A, #ad_B, #ad_C, #ad_D, #ad_E, #ad_F, #ad_G, #ad_H, #ad_I, #ad_J,
+#ad_K, #ad_L, #ad_M, #ad_N, #ad_O, #ad_P, #ad_Q, #ad_R, #ad_S, #ad_T, #ad_U,
+#ad_V, #ad_W, #ad_X, #ad_Y, #ad_Z, .AD-new1, .AD-new2, .AD-new3, .boxC-RA, .ad650, #adsFrame, sohuadcode,
 
 /* feng */
 .top_news, .top_news+.wrap, .quick_services, .pg_viewthread .search_box, .pg_viewthread .header_wrap, .store_products_wrap, .pg_viewthread .footer_wrap, .pg_viewthread .a_pt,
 
 /* other */
-#article_ad0, #random-ads, #adsense, #nnn, .J_adv, #huanqiu-tieInner, .mod-365, .yjfxImg, #ad1, #ad2, #ad3, #ad4, #ad5, #headerTitle, #articleTit, .hotwz,
+#article_ad0, #random-ads, #adsense, #nnn, .J_adv, #huanqiu-tieInner,
+.mod-365, .yjfxImg, #ad1, #ad2, #ad3, #ad4, #ad5, #headerTitle, #articleTit, .hotwz,
 
 /* qxwz */
 /* .header-navbar .navigation-down,  */
 
+/* share */
 .bshareDiv,
+
+/* yuque */
+.article-content .wm-wrapper .wm,
+
+#most-visited,
 
 .article_right_side .right-link, .widget-register, .widget-welcome-question
 
 {display:none!important;visibility:hidden!important;}
 
-/* http://jzh.12333sh.gov.cn/jzh/personInfoAction!add.action?loginid=125689&loginusername=410327198309113919&unitId=77889 */
+/* http://jzh.12333sh.gov.cn/jzh/personInfoAction */
 #div {
     overflow: visible !important;
 }
