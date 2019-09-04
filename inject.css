@@ -26,6 +26,9 @@ body{}
 .top_news, .top_news+.wrap, .quick_services, .pg_viewthread .search_box, .pg_viewthread .header_wrap, .store_products_wrap, .pg_viewthread .footer_wrap, .pg_viewthread .a_pt,
 
 /* other */
-#article_ad0, #random-ads, #adsense, #nnn, .J_adv, #huanqiu-tieInner, .mod-365, .yjfxImg, #ad1, #ad2, #ad3, #ad4, #ad5, #headerTitle, #articleTit, .hotwz, .widget-register
+#article_ad0, #random-ads, #adsense, #nnn, .J_adv, #huanqiu-tieInner, .mod-365, .yjfxImg, #ad1, #ad2, #ad3, #ad4, #ad5, #headerTitle, #articleTit, .hotwz, .widget-register,
+
+/* yuque */
+.main-wrapper .wm-wrapper .wm
 
 {display:none!important;visibility:hidden!important;}

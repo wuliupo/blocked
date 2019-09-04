@@ -74,17 +74,21 @@ function blockHost(host) {
 
 function blockWords(host) {
   for (var i = 0; i < BLOCKED_WORDS.length; i++) {
-    if (host.indexOf(BLOCKED_WORDS[i]) > -1) {
+    if (validWord(BLOCKED_WORDS[i]) && host.indexOf(BLOCKED_WORDS[i]) > -1) {
       console.log('[Word] ' + BLOCKED_WORDS[i]);
       return true;
     }
   }
 }
 
+function validWord(word) {
+  return word && word.length > 4;
+}
+
 function blockDomain(host) {
   var currentTab;
 
-  // TODO async
+  // TODO: async
   chrome.windows.getCurrent(function(currentWindow) {
     chrome.tabs.query({
       active: true,
@@ -96,7 +100,7 @@ function blockDomain(host) {
 
   // if not baidu, block baidu
   for (var i = 0; i < BLOCKED_DOMAINS.length; i++) {
-    if (currentTab && currentTab.indexOf(BLOCKED_DOMAINS[i]) < 0 && host.indexOf(BLOCKED_DOMAINS[i]) > 0) {
+    if (validWord(BLOCKED_DOMAINS[i]) && currentTab && currentTab.indexOf(BLOCKED_DOMAINS[i]) < 0 && host.indexOf(BLOCKED_DOMAINS[i]) > 0) {
       console.log('[Word] ' + BLOCKED_DOMAINS[i]);
       return true;
     }
@@ -105,6 +109,7 @@ function blockDomain(host) {
 
 chrome.webRequest.onBeforeRequest.addListener(
   function(details) {
+    debugger;
     return {
       cancel: blockWords(details.url) || blockHost(details.url) || blockDomain(details.url)
     };
