@@ -29,6 +29,9 @@ body{}
 #article_ad0, #random-ads, #adsense, #nnn, .J_adv, #huanqiu-tieInner, .mod-365, .yjfxImg, #ad1, #ad2, #ad3, #ad4, #ad5, #headerTitle, #articleTit, .hotwz, .widget-register,
 
 /* yuque */
-.main-wrapper .wm-wrapper .wm
+.main-wrapper .wm-wrapper .wm,
+
+/* csdn */
+.login-box1, .login-mark1
 
 {display:none!important;visibility:hidden!important;}

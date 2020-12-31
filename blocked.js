@@ -1,4 +1,4 @@
-var BLOCKED_HOST = '0.gravatar.com fonts.gstatic.com fonts.googleapis.com ' +
+var BLOCKED_HOST = ('0.gravatar.com fonts.gstatic.com fonts.googleapis.com ' +
 ' hm.baidu.com cpro.baidu.com f.f70123.com f.e704.net g.163.com ipservice.163.com ' +
 ' web.stat.ws.126.net api.money.126.net rec.g.163.com popme.163.com ' +
 ' p.tanx.com tanx.com plpp.cre99.com static.pay.baidu.com als.baidu.com cbjs.baidu.com ' +
@@ -39,7 +39,7 @@ var BLOCKED_HOST = '0.gravatar.com fonts.gstatic.com fonts.googleapis.com ' +
 ' v1.stat.ku6.com st.vq.ku6.cn stat2.888.ku6.com pq.stat.ku6.com bill.agent.56.com ' +
 ' union.56.com v16.56.com simba.6.cn pole.6rooms.com shrek.6.cn static.lstat.youku.com ' +
 ' iwstat.tudou.com nstat.tudou.com stats.tudou.com live.github.com collector.githubapp.com ' +
-' qr.liantu.com push.zhanzhang.baidu.com sp0.baidu.com ' +
+' qr.liantu.com sp0.baidu.com ' +
 ' cpv.ggytc.com www.ggycpm.com p2.hyz86.com cp.ggyapp.com sugar.zhihu.com ' +
 ' ds.api.baifendian.com static1.baifendian.com www.baifendian.com baifendian.com ds.api.baifendian.com ' +
 ' afp.alicdn.com hits.xilu.com js.passport.qihucdn.com afpmm.alicdn.com siteapp.baidu.com ' +
@@ -48,18 +48,18 @@ var BLOCKED_HOST = '0.gravatar.com fonts.gstatic.com fonts.googleapis.com ' +
 ' pstatic.xunlei.com dvs.china.com track.china.com rank.hit.china.com player.youku.com www.qcw.com ' +
 ' static.googleadsserving.cn click.aliyun.com dn-growing.qbox.me ' +
 ' platform.twitter.com cdn.heapanalytics.com www.googletagmanager.com rabc2.iteye.com growingio.com ' +
-' tag.crsspxl.com zz.bdstatic.com push.zhanzhang.baidu.com c.simba.taobao.com'.split(/\s+/);
+' tag.crsspxl.com zz.bdstatic.com push.zhanzhang.baidu.com c.simba.taobao.com element-api.ele.me element-api.ar.elenet.me private-alipayobjects.alipay.com sa.qxwz.com nyx.qxwz.com').split(/\s+/);
 
-var BLOCKED_WORDS = 'cnzz 0745zpl twyxi jb51 360doc qihu qihoo open-open e70123 ' +
+var BLOCKED_WORDS = ('cnzz 0745zpl twyxi jb51 360doc qihu qihoo open-open e70123 ' +
 ' duoshuo 51.la 360.cn 51yes alimama jiathis.com google-analytics wrating mediav.com ' +
 ' share.baidu.com pos.baidu.com bnhtml csbew walkme sc933 114so at98 ad-survey /ads/ ' +
 ' .ads. feitian001 youle55 3dwwwgame media8 twcczhu fwt0 yule8 fwt0 0101122 /a_if/ /gg/ ' +
 ' /ab2/ _ad_ mmstat bosstatic kejet adinall jtxh hayohui qtmojo xtgreat p0y zhuanle360 ' +
 ' ouyafoods 52896368 sina678 shuma2 jixing8 jixian360 yfi8 51ads zhuanle360 qucaigg ' +
 ' googletagmanager googleadsserving googleads doubleclick googlesyndication ' +
-' nyx.qxwz.com/js/biz growingio most-visited taboola stack-sonar'.split(/\s+/);
+' nyx.qxwz.com/js/biz biz.js growingio most-visited taboola stack-sonar jb51.net').split(/\s+/);
 
-var BLOCKED_DOMAINS = 'baidu youdao dfcfw sogou qq.com sina sohu youdao google'.split(/\s+/);
+var BLOCKED_DOMAINS = ('baidu youdao dfcfw sogou qq.com sina sohu youdao google').split(/\s+/);
 
 function blockHost(host) {
   var colon;
@@ -69,14 +69,15 @@ function blockHost(host) {
   if (colon > 0) {
     host = host.substring(0, colon);
   }
-  return host && BLOCKED_HOST.indexOf(host) > -1;
+  return host && BLOCKED_HOST.indexOf(host) > -1 ? host : '';
 }
 
 function blockWords(host) {
   for (var i = 0; i < BLOCKED_WORDS.length; i++) {
-    if (validWord(BLOCKED_WORDS[i]) && host.indexOf(BLOCKED_WORDS[i]) > -1) {
-      console.log('[Word] ' + BLOCKED_WORDS[i]);
-      return true;
+    var words = BLOCKED_WORDS[i];
+    if (validWord(words) && host.indexOf(words) > -1) {
+      console.log('[Word] ' + words);
+      return { host: host, words: words };
     }
   }
 }
@@ -94,24 +95,38 @@ function blockDomain(host) {
       active: true,
       windowId: currentWindow.id
     }, function(activeTabs) {
-      currentTab = activeTabs[0].url;
+      currentTab = activeTabs && activeTabs[0] && activeTabs[0].url;
     });
   });
 
   // if not baidu, block baidu
   for (var i = 0; i < BLOCKED_DOMAINS.length; i++) {
-    if (validWord(BLOCKED_DOMAINS[i]) && currentTab && currentTab.indexOf(BLOCKED_DOMAINS[i]) < 0 && host.indexOf(BLOCKED_DOMAINS[i]) > 0) {
-      console.log('[Word] ' + BLOCKED_DOMAINS[i]);
-      return true;
+    var domain = BLOCKED_DOMAINS[i];
+    if (validWord(domain) && currentTab && currentTab.indexOf(domain) < 0 && host.indexOf(domain) > 0) {
+      console.log('[Word] ' + domain);
+      return { url: currentTab, domain: domain };
     }
   }
 }
 
 chrome.webRequest.onBeforeRequest.addListener(
   function(details) {
-    debugger;
+    var cancel = blockHost(details.url);
+    if (!cancel) {
+      cancel = blockWords(details.url);
+      if (!cancel) {
+        cancel = blockDomain(details.url);
+      }
+    }
+    if (cancel) {
+      chrome.browserAction.setBadgeText({text: 'block'});
+      chrome.browserAction.setBadgeBackgroundColor({color: [255, 0, 0, 255]});
+      chrome.extension.sendMessage({
+        blocked: cancel
+      });
+    }
     return {
-      cancel: blockWords(details.url) || blockHost(details.url) || blockDomain(details.url)
+      cancel: !!cancel
     };
   }, {
     urls: ["<all_urls>"]
